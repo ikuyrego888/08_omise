@@ -1,0 +1,366 @@
+body {
+    width: 98%;
+    margin: 0 auto;
+    /* font-size: 62.5%; */
+    font-size: 1.0rem;
+}
+
+#searchForm {
+    width: 60%;
+    margin: 0 auto;
+    margin-top: 6%;
+    margin-bottom: 1%;
+    font-size: 1.2rem;
+    color: white;
+    font-weight: bold;
+    text-align: center;
+    background-color: #d2a04a;
+    background-color: #b98b3b;
+    background-color: #063927;
+    border-radius: 10px;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
+    position: relative;
+}
+
+#recommend {
+    font-family: monospace;
+    font-weight: normal;
+    font-size: 1.0rem;
+    height: 24px;
+    line-height: 32px;
+}
+
+#bookmark {
+    height: 40px;
+    line-height: 40px;
+}
+
+#registerPage a {
+    text-decoration: none;
+    color: black;
+}
+
+#registerPage {
+    width: 20%;
+    height: 32px;
+    display: block;
+    border-radius: 16px;
+    border: 1.2px solid rgb(128, 125, 125);
+    font-size: 0.9rem;
+    background-color: #00704A;
+    background-color: #dcdcdc;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    position: absolute;
+    top: 1.4%;
+    right: 2%;
+    z-index: 2;
+}
+
+#registerPage:hover {
+    background-color: #585d60;
+    color: white;
+}
+
+#registerPage a:hover {
+    color: white;
+}
+
+#container {
+    display: flex;
+    /* background-color: antiquewhite; */
+    /* border-radius: 10px; */
+}
+
+/* サイドメニューの設定 */
+#sidemenu {
+    width: 400px;
+    height: 72vh;
+    padding-left: 10px;
+    padding-right: 10px;
+    margin-top: 18px;
+    /* border: 1px solid #ccc; */
+    overflow: hidden;
+    background-color: rgb(48, 62, 82);
+    background-color: #2589d0;
+    background-color: rgb(223, 217, 217);
+    /* color: white; */
+    border-radius: 20px;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
+    position: fixed;
+    left: -400px;
+    transition: left 0.5s ease;
+}
+
+/* .hidden-menu { */
+    /* left: -400px; */
+    /* transition: left 0.5s ease; */
+/* } */
+
+#menuButton {
+    width: 36px;
+    height: 36px;
+    font-size: 1.4rem;
+    color: white;
+    background-color: #585d60;
+    border-radius: 50%;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    z-index: 2;
+}
+
+#menuButton:hover {
+    opacity: 0.8;
+}
+
+fieldset {
+    border: none;
+    margin: 0;
+    /* padding: 0; */
+    margin-top: 4%;
+    margin-bottom: 4%;
+    background-color: white;
+    border-radius: 10px;
+}
+
+legend {
+    width: 100%;
+    /* padding-left: 5%; */
+    border-bottom: 1px solid #ccc;
+    border-radius: 5px;
+    /* background-color: #00704A; */
+    /* color: #2589d0; */
+    font-size: 1.0rem;
+    color: #1e80c6;
+    color: #b98b3b;
+    /* box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3); */
+}
+
+fieldset > label {
+    font-size: 0.8rem;
+    margin-right: 4%;
+}
+
+#textKey {
+    width: 98%;
+    height: 20px;
+    border-radius: 5px;
+    border: 1.2px solid rgb(128, 125, 125);
+}
+
+#andSearch {
+    font-size: 0.7rem;
+}
+
+#searchButton {
+    width: 36%;
+    height: 28px;
+    border-radius: 10px;
+    border: 1.2px solid rgb(128, 125, 125);
+    display: block;
+    margin: 0 auto;
+}
+
+#searchButton:hover {
+    background-color: #2589d0;
+    background-color: #00704A;
+    color: white;
+}
+
+#resultField {
+    width: 100%;
+    margin: 0 auto;
+}
+
+table {
+    border-collapse: collapse;
+    width: 87%;
+    margin-top: 20px;
+    margin-left: 8%;
+    margin-right: 5%;
+}
+
+tr, td {
+    border: 1px solid #dddddd;
+}
+
+#trOmise {
+    background-color: #1e80c6;
+    background-color: #00704A;
+    height: 40px;
+    color: white;
+}
+
+#tdOmise {
+    width: 75%;
+}
+
+#tdGenre {
+    width: 25%;
+}
+
+#divGenre {
+    width: 70%;
+    height: 26px;
+    background-color: white;
+    background-color: #14486d;
+    background-color: #00704A;
+    background-color: #063927;
+    font-size: 0.9rem;
+    /* color: #1e80c6; */
+    border-radius: 10px;
+    /* border: 1.2px solid white; */
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2);
+    display: flex;
+    margin: 0 auto;
+    justify-content: center;
+    align-items: center;
+}
+
+#tdArea {
+    width: 40%;
+    font-size: 0.9rem;
+}
+
+#spanSpace {
+    font-size: 0.8rem;
+}
+
+#tdSituation {
+    width: 25%;
+    font-size: 0.9rem;
+}
+
+#tdMemo {
+    width: 35%;
+    font-size: 0.9rem;
+}
+
+#trUrl {
+    background-color: #eae7e7;
+}
+
+#urlCSS {
+    color: #1e80c6;
+    font-size: 0.8rem;
+}
+
+/* 一度クリックしても色が変化しないようにする */
+#urlCSS:visited {
+    color: #1e80c6;
+}
+
+@media screen and (max-width: 640px) {
+    #searchForm {
+        margin-top: 12%;
+        margin-bottom: 0;
+    }
+
+    #recommend {
+        font-size: 0.7rem;
+        height: 12px;
+        line-height: 20px;
+    }
+
+    #bookmark {
+        font-size: 0.8rem;
+        height: 28px;
+        line-height: 28px;
+    }
+
+    #registerPage {
+        width: 28%;
+        font-size: 0.6rem;
+        height: 24px;
+    }
+
+    #menuButton {
+        width: 32px;
+        height: 32px;
+        font-size: 1.2rem;
+        margin-left: -2px;
+    }
+
+    #sidemenu {
+        width: 280px;
+        height: 68vh;
+        left: -290px;
+    }
+
+    #legendSet {
+        font-size: 0.8rem;
+    }
+
+    #andSearch {
+        font-size: 0.5rem;
+    }
+
+    fieldset > label {
+        margin-right: 2%;
+        font-size: 0.6rem;
+    }
+
+    #container {
+        /* width: 60%; */
+    }
+
+    #trOmise {
+        font-size: 0.7rem;
+        height: 28px;
+    }
+
+    #divGenre {
+        font-size: 0.6rem;
+        height: 18px;
+    }
+
+    #tdArea {
+        font-size: 0.5rem;
+        width: 46%;
+    }
+
+    #spanSpace {
+        font-size: 0.4rem;
+    }
+
+    #tdSituation {
+        font-size: 0.5rem;
+        width: 22%;
+    }
+
+    #tdMemo {
+        font-size: 0.5rem;
+        width: 32%;
+    }
+
+    #trUrl {
+        font-size: 0.5rem;
+        height: 5px;
+    }
+
+    #urlCSS {
+        font-size: 0.5rem;
+    }
+
+    #resultField {
+        width: 100%;
+        margin-left: 5px;
+        margin-right: -5px;
+        /* font-size: 0.6rem; */
+    }
+
+    table {
+        /* width: 100%; */
+    }
+
+    #textKey::placeholder {
+        font-size: 0.6rem;
+    }
+}

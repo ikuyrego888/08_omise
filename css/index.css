@@ -1,0 +1,224 @@
+body {
+    width: 98%;
+    margin: 0 auto;
+    /* font-size: 62.5%; */
+    font-size: 1.0rem;
+}
+
+#registerForm {
+    width: 60%;
+    margin: 0 auto;
+    margin-top: 6%;
+    font-size: 1.2rem;
+    color: white;
+    font-weight: bold;
+    text-align: center;
+    line-height: 40px;
+    background-color: #d2a04a;
+    background-color: #b98b3b;
+    background-color: #063927;
+    border-radius: 10px;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
+    position: relative;
+}
+
+#recommend {
+    font-family: monospace;
+    font-weight: normal;
+    font-size: 1.0rem;
+    height: 24px;
+    line-height: 32px;
+}
+
+#bookmark {
+    height: 40px;
+    line-height: 40px;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+#searchPage {
+    width: 20%;
+    height: 32px;
+    display: block;
+    border-radius: 16px;
+    border: 1.2px solid rgb(128, 125, 125);
+    font-size: 0.9rem;
+    background-color: #dcdcdc;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    position: absolute;
+    top: 1.4%;
+    right: 2%;
+    z-index: 2;
+}
+
+#searchPage:hover {
+    background-color: #585d60;
+    color: white;
+}
+
+#searchPage a:hover {
+    color: white;
+}
+
+#form {
+    width: 80%;
+    /* height: 48vh; */
+    margin: 0 auto;
+    /* background-color: rgb(223, 217, 217); */
+    font-size: 1.0rem;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 5%;
+    margin-bottom: 4%;
+}
+
+#form td {
+    border: 1px solid #ddd;
+    padding: 10px;
+    height: 40px;
+}
+
+#form td:nth-child(1) {
+    width: 30%;
+    border-left: none;
+    /* background-color: rgb(244, 239, 239); */
+    background-color: #dcc296;
+}
+
+#form td:nth-child(2) {
+    width: 70%;
+    border-right: none;
+}
+
+#must {
+    background-color: red;
+    background-color: #00704A;
+    color: white;
+    font-size: 0.7rem;
+    padding: 2% 4% 2% 4%;
+    margin-left: 8%;
+    border-radius: 5px;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2);
+}
+
+#optional {
+    background-color: rgb(90, 88, 88);
+    color: white;
+    font-size: 0.7rem;
+    padding: 2% 4% 2% 4%;
+    margin-left: 8%;
+    border-radius: 5px;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2);
+}
+
+#omise, #area, #url, #memo {
+    width: 100%;
+    height: 32px;
+    font-size: 1.0rem;
+    border-radius: 5px;
+    border: 1.2px solid rgb(128, 125, 125);
+}
+
+#situation, #genre {
+    width: 60%;
+    height: 32px;
+    font-size: 1.0rem;
+    border-radius: 5px;
+    border: 1.2px solid rgb(128, 125, 125);
+}
+
+#register {
+    width: 40%;
+    height: 32px;
+    display: block;
+    margin: 0 auto;
+    border-radius: 16px;
+    border: 1.2px solid rgb(128, 125, 125);
+    font-size: 0.9rem;
+    cursor: pointer;
+}
+
+#register:hover {
+    background-color: #1e80c6;
+    background-color: #00704A;
+    color: white;
+}
+
+@media screen and (max-width: 640px) {
+    /* 何故か反応せず... */
+    #registerForm {
+        margin-top: 12%;
+        margin-bottom: 0;
+    }
+
+    #recommend {
+        font-size: 0.7rem;
+        height: 12px;
+        line-height: 20px;
+    }
+
+    #bookmark {
+        font-size: 0.8rem;
+        height: 28px;
+        line-height: 28px;
+    }
+
+    #searchPage {
+        width: 28%;
+        font-size: 0.6rem;
+        height: 24px;
+    }
+
+    #form {
+        width: 92%;
+        font-size: 0.84rem;
+    }
+
+    #form td {
+        padding: 5px;
+        height: 54px;
+    }
+
+    #must {
+        font-size: 0.64rem;
+        padding: 3% 5% 3% 5%;
+    }
+
+    #optional {
+        font-size: 0.64rem;
+        padding: 3% 5% 3% 5%;
+    }
+
+    #omise, #area, #url, #memo {
+        font-size: 0.8rem;
+        width: 94%;
+        height: 28px;
+    }
+
+    #situation, #genre {
+        font-size: 0.8rem;
+        height: 28px;
+    }
+
+    #area::placeholder {
+        font-size: 0.64rem;
+    }
+
+    #register {
+        font-size: 0.7rem;
+        width: 48%;
+        margin-top: 24px;
+    }
+
+}
