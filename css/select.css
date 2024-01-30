@@ -3,6 +3,7 @@ body {
     margin: 0 auto;
     /* font-size: 62.5%; */
     font-size: 1.0rem;
+    overflow-x: hidden;
 }
 
 #searchForm {
@@ -62,6 +63,7 @@ body {
 
 #registerPage:hover {
     background-color: #585d60;
+    opacity: 0.9;
     color: white;
 }
 
@@ -169,7 +171,6 @@ fieldset > label {
 }
 
 #searchButton:hover {
-    background-color: #2589d0;
     background-color: #00704A;
     color: white;
 }
@@ -225,7 +226,7 @@ tr, td {
 }
 
 #tdArea {
-    width: 40%;
+    width: 50%;
     font-size: 0.9rem;
 }
 
@@ -234,7 +235,7 @@ tr, td {
 }
 
 #tdSituation {
-    width: 25%;
+    width: 15%;
     font-size: 0.9rem;
 }
 
@@ -257,10 +258,115 @@ tr, td {
     color: #1e80c6;
 }
 
+#tdUrl {
+    width: 75%;
+}
+
+#tdDetail {
+    width: 12.5%;
+}
+
+#tdDelete {
+    width: 12.5%;
+}
+
+#divDetail, #divDelete {
+    width: 75%;
+    height: 20px;
+    background-color: #14486d;
+    background-color: #585d60;
+    background-color: #efefef;
+    background-color: white;
+    font-size: 0.8rem;
+    /* color: #1e80c6; */
+    border-radius: 10px;
+    /* border: 1.2px solid white; */
+    /* box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2); */
+    display: flex;
+    margin: 0 auto;
+    justify-content: center;
+    align-items: center;
+}
+
+#divDetail a, #divDelete a {
+    text-decoration: none;
+    color: black;
+}
+
+#divDetail:hover, #divDelete:hover {
+    opacity: 0.9;
+    background-color: #585d60;
+}
+#divDetail:hover a, #divDelete:hover a {
+    color: white;
+}
+
+/* モーダル時の背景設定 */
+#modalBackground {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    z-index: 10;
+}
+
+#confirmDialog {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #fff;
+    width: 40%;
+    padding: 10px;
+    padding-bottom: 20px;
+    border-radius: 20px;
+    border: 1px solid #ccc;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    z-index: 11;
+    margin: 0 auto;
+    text-align: center;
+}
+
+#confirmDialog p {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+#confirmDialog button {
+    line-height: 20px;
+    width: 40%;
+    height: 32px;
+    padding: 4px 12px;
+    margin-right: 20px;
+    border-radius: 16px;
+    border: none;
+    cursor: pointer;
+}
+
+#confirmDialog button:last-child {
+    margin-right: 0;
+}
+
+#confirmBtn:hover {
+    background-color: #00704A;
+    color: white;
+}
+
+#cancelBtn:hover {
+    opacity: 0.8;
+    background-color: #585d60;
+    color: white;
+}
+
 @media screen and (max-width: 640px) {
     #searchForm {
         margin-top: 12%;
-        margin-bottom: 0;
+        margin-bottom: -2%;
+        width: 80%;
     }
 
     #recommend {
@@ -278,6 +384,7 @@ tr, td {
     #registerPage {
         width: 28%;
         font-size: 0.6rem;
+        font-weight: bold;
         height: 24px;
     }
 
@@ -285,17 +392,22 @@ tr, td {
         width: 32px;
         height: 32px;
         font-size: 1.2rem;
-        margin-left: -2px;
+        margin-left: 0px;
     }
 
     #sidemenu {
         width: 280px;
-        height: 68vh;
+        height: 72vh;
         left: -290px;
+    }
+
+    label {
+        font-weight: bold;
     }
 
     #legendSet {
         font-size: 0.8rem;
+        font-weight: bold;
     }
 
     #andSearch {
@@ -307,22 +419,21 @@ tr, td {
         font-size: 0.6rem;
     }
 
-    #container {
-        /* width: 60%; */
-    }
-
     #trOmise {
-        font-size: 0.7rem;
+        font-size: 0.9rem;
+        font-weight: bold;
         height: 28px;
     }
 
     #divGenre {
+        width: 80%;
         font-size: 0.6rem;
+        font-weight: bold;
         height: 18px;
     }
 
     #tdArea {
-        font-size: 0.5rem;
+        font-size: 0.6rem;
         width: 46%;
     }
 
@@ -331,12 +442,12 @@ tr, td {
     }
 
     #tdSituation {
-        font-size: 0.5rem;
+        font-size: 0.6rem;
         width: 22%;
     }
 
     #tdMemo {
-        font-size: 0.5rem;
+        font-size: 0.6rem;
         width: 32%;
     }
 
@@ -349,9 +460,15 @@ tr, td {
         font-size: 0.5rem;
     }
 
+    #divDetail, #divDelete {
+        font-size: 0.6rem;
+        width: 84%;
+        height: 16px;
+    }
+
     #resultField {
         width: 100%;
-        margin-left: 5px;
+        margin-left: 4px;
         margin-right: -5px;
         /* font-size: 0.6rem; */
     }
@@ -363,4 +480,9 @@ tr, td {
     #textKey::placeholder {
         font-size: 0.6rem;
     }
+
+    #confirmDialog {
+        width: 80%;
+    }
+
 }

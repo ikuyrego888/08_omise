@@ -4,14 +4,7 @@ require_once('funcs.php');
 session_start();
 
 //1. DB接続
-try {
-  // さくらサーバ データベース
-  // $pdo = new PDO();
-  // ローカルストレージ データベース Password:MAMP='root',XAMPP=''
-  // $pdo = new PDO();
-} catch (PDOException $e) {
-  exit('DBConnection Error:'.$e->getMessage());
-}
+$pdo = db_conn();
 
 //2. 検索条件の初期化
 $situationCondition = "";
@@ -123,8 +116,10 @@ $view = "";
 
 if($status == false) {
     //execute（SQL実行時にエラーがある場合）
-  $error = $stmt -> errorInfo();
-  exit("SQL_ERROR:" .$error[2]);
+  sql_error($stmt);
+  // ↑をfuncs.phpから引用しているため、以下2行は不要
+  // $error = $stmt -> errorInfo();
+  // exit("SQL_ERROR:" .$error[2]);
 
 } else {
   //Selectデータの数だけ自動でループしてくれる
@@ -133,15 +128,23 @@ if($status == false) {
     $view .= "<table id='resultTable'>";
     $view .= "<tr id ='trOmise'>";
     // $view .= "<td>" .h($res["id"]) ."</td>";
-    $view .= "<td colspan='5' id='tdOmise'>" .'★ ' .h($res["omise"]) ."</td>";
-    $view .= "<td id='tdGenre'><div id='divGenre'>" .h($res["genre"]) ."</div></td></tr>";
-    $view .= "<tr><td colspan='3' id='tdArea'>" ."<span id='spanSpace'>　</span>場所：" .h($res["area"]) ."</td>";
+    $view .= "<td colspan='8' id='tdOmise'>" .'★ ' .h($res["omise"]) ."</td>";
+    // ↑上のコードだと"detail.php"に遷移しない設定。"detail.phpに遷移するために以下３行に書き換え"
+    // $view .= "<td colspan='5' id='tdOmise'><a href='detail.php?id=";
+    // $view .= h($res["id"])."'>";
+    // $view .= "★ ".h($res["omise"]) ."</a></td>";
+    $view .= "<td id='tdGenre' colspan='2'><div id='divGenre'>" .h($res["genre"]) ."</div></td></tr>";
+    $view .= "<tr><td colspan='6' id='tdArea'>" ."<span id='spanSpace'>　</span>場所：" .h($res["area"]) ."</td>";
     $view .= "<td colspan='1' id='tdSituation'>" .h($res["situation"]) ."</td>";
     // $view .= "<td>" .h($res["genre"]) ."</td>";
     // $view .= "<td>" .h($res["area"]) ."</td>";
-    $view .= "<td colspan='2' id='tdMemo'>" .'メモ：' .h($res["memo"]) ."</td></tr>";
+    $view .= "<td colspan='3' id='tdMemo'>" .'メモ：' .h($res["memo"]) ."</td></tr>";
     // relに"noopener"と"noreferrer"はセキュリティ設定
-    $view .= "<tr id = 'trUrl'><td colspan='6'><span id='spanSpace'>　</span><a href='" .h($res["url"]) ."' target='_blank' rel='noopener noreferrer' id='urlCSS'>".h($res["url"])."</a></td>";
+    $view .= "<tr id='trUrl'><td colspan='8' id='tdUrl'><span id='spanSpace'>　</span><a href='" .h($res["url"]) ."' target='_blank' rel='noopener noreferrer' id='urlCSS'>".h($res["url"])."</a></td>";
+    $view .= "<td id='tdDetail' colspan='1'><div id='divDetail'><a href='detail.php?id=".h($res["id"])."'>修正</a></div></td>";
+    // $view .= "<td id='tdDelete'><div id='divDelete'><a href='delete.php?id=".h($res["id"])."' id='deleteBtn'>削除</a></div></td>";
+    // 削除用のaタグに"data-id"をセット。これにより後述するダイアログ設定でも削除するデータIDを取得できるようにする。
+    $view .= "<td id='tdDelete' colspan='1'><div id='divDelete'><a href='delete.php?id=".h($res["id"])."' data-id='".h($res["id"])."'>削除</a></div></td>";
     $view .= "</tr>";
     $view .= "</table>";
   }
@@ -262,6 +265,19 @@ $_SESSION["result"] = $view;
   
   </div>
 </div>
+
+<!-- モーダル用の背景 -->
+<div id="modalBackground"></div>
+
+<!-- 確認ダイアログ用のモーダル -->
+<div id="confirmDialog">
+    <p>本当に削除しますか？</p>
+    <div id="dialogBtn">
+        <button id="confirmBtn">OK</button>
+        <button id="cancelBtn">キャンセル</button>
+    </div>
+</div>
+
 <!-- Main[End] -->
 <script>
   // メニューボタンの設定
@@ -312,6 +328,35 @@ $_SESSION["result"] = $view;
   $("#serchButton").on("click", function() {
 
   })
+
+  // 以下、ダイアログの設定
+  $('#divDelete a').on("click", function(e) {
+    // クリックされた場合も同様にモーダル背景とダイアログを表示
+    $('#modalBackground, #confirmDialog').fadeIn();
+
+    // 削除データのIDを取得
+    let deleteID = $(this).data("id");
+    console.log(deleteID); 
+
+    // キャンセルボタンがクリックされたときの処理
+    $('#cancelBtn, #modalBackground').on("click", function() {
+        console.log('キャンセルボタンがクリックされました');
+        // モーダル背景とダイアログを非表示
+        $('#modalBackground, #confirmDialog').fadeOut();
+    });
+
+    // OKボタンがクリックされたときの処理
+    $('#confirmBtn').on("click", function() {
+        console.log('OKボタンがクリックされました');
+        // ダイアログがOKされた場合、delete.phpに遷移
+        window.location.href = 'delete.php?id=' + deleteID;
+    });
+
+    // aタグのデフォルト動作を無効化
+    e.preventDefault(); 
+
+  });
+
 </script>
 
 </body>

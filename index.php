@@ -4,9 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>お店お気に入り登録</title>
-  <!-- <link href="css/bootstrap.min.css" rel="stylesheet"> -->
   <link href="css/index.css" rel="stylesheet">
-  <!-- <style>div{padding: 10px;font-size:16px;}</style> -->
 </head>
 <body>
 
@@ -28,15 +26,16 @@
 </div>
 
 <div id="form">
+	<form method="POST" action="insert.php">
 		<table>
 			<tr>
 				<td>お店<span id="must">必須</span></td>
-				<td><input type="text" name="omise" id="omise" placeholder="店名を入力"></td>
+				<td><input type="text" name="omise" id="omise" placeholder="店名を入力" required></td>
 			</tr>
 			<tr>
 				<td>シチュエーション<span id="must">必須</span></td>
 				<td>
-					<select name="situation" id="situation">
+					<select name="situation" id="situation" required>
 						<option value="" hidden>選んでください</option>
 						<option value="会食：接待">会食：接待</option>
 						<option value="会食：ゆるめ">会食：ゆるめ</option>
@@ -48,7 +47,7 @@
       <tr>
 				<td>ジャンル<span id="must">必須</span></td>
 				<td>
-					<select name="genre" id="genre">
+					<select name="genre" id="genre" required>
 						<option value="" hidden>選んでください</option>
 						<option value="和食">和食</option>
 						<option value="洋食">洋食</option>
@@ -67,12 +66,12 @@
 			</tr>
 			<tr>
 				<td>エリア<span id="must">必須</span></td>
-				<td><input type="text" name="area" id="area" placeholder="エリアを入力（番地手前までの入力を推奨）"></td>
+				<td><input type="text" name="area" id="area" placeholder="エリアを入力（番地手前までの入力を推奨）" required></td>
 			</tr>
 			<tr>
       <tr>
 				<td>URL<span id="must">必須</span></td>
-				<td><input type="text" name="url" id="url" placeholder="お店のURLを入力"></td>
+				<td><input type="text" name="url" id="url" placeholder="お店のURLを入力" required></td>
 			</tr>
 			<tr>
       <tr>
