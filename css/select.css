@@ -36,12 +36,12 @@ body {
     line-height: 40px;
 }
 
-#registerPage a {
+#registerPage a, #logout a, #admButton a {
     text-decoration: none;
     color: black;
 }
 
-#registerPage {
+#registerPage, #logout, #admButton {
     width: 20%;
     height: 32px;
     display: block;
@@ -57,8 +57,31 @@ body {
     cursor: pointer;
     position: absolute;
     top: 1.4%;
-    right: 2%;
+    /* left: 2%; */
     z-index: 2;
+}
+
+#registerPage {
+    left: 2%;
+}
+
+#logout {
+    right: 2%;
+    width: 15%;
+    color: white;
+    background-color: #585d60;
+}
+
+#admButton {
+    right: 18%;
+    width: 15%;
+    color: white;
+    background-color: #585d60;
+    background-color: #cd114a;
+}
+
+#logout a, #admButton a {
+    color: white;
 }
 
 #registerPage:hover {
@@ -67,7 +90,11 @@ body {
     color: white;
 }
 
-#registerPage a:hover {
+#logout:hover, #admButton:hover {
+    opacity: 0.7;
+}
+
+#registerPage a:hover, #logout a:hover {
     color: white;
 }
 
@@ -297,6 +324,7 @@ tr, td {
     opacity: 0.9;
     background-color: #585d60;
 }
+
 #divDetail:hover a, #divDelete:hover a {
     color: white;
 }
@@ -381,11 +409,19 @@ tr, td {
         line-height: 28px;
     }
 
-    #registerPage {
+    #registerPage, #logout, #admButton {
         width: 28%;
         font-size: 0.6rem;
         font-weight: bold;
         height: 24px;
+    }
+
+    #logout, #admButton {
+        width: 20%;
+    }
+
+    #admButton {
+        right: 24%;
     }
 
     #menuButton {

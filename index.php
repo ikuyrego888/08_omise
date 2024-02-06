@@ -1,3 +1,19 @@
+<?php
+
+//0. SESSION開始！！
+session_start();
+include('funcs.php');
+sschk();
+
+// 最後に操作してから30分経過したら自動的にログアウト
+if (isset($_SESSION["lastActive"]) && (time() - $_SESSION["lastActive"] > 1800)) {
+    session_unset();     // unset $_SESSION 変数
+    session_destroy();   // セッションを破棄
+    header("Location: login.php");
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="ja">
 <head>
@@ -15,6 +31,16 @@
 
 <!-- Main[Start] -->
 <div id="searchPage"><a href="select.php">お気に入り検索へ</a></div>
+<div id="logout"><a href="logout.php">ログアウト</a></div>
+
+<!-- 管理者IDの場合にのみ表示させるボタン -->
+<?php
+if (isset($_SESSION["admFlg"])) {
+  if ($_SESSION["admFlg"] == 1 ) {
+    echo '<div id="admButton"><a href="admin.php">管理者ページ</a></div>';
+  }
+};
+?>
 
 <div id="registerForm">
   <div id="recommend">

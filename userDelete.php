@@ -9,7 +9,7 @@ sschk();
 $pdo = db_conn();
 
 // ３．データ登録SQL作成
-$sql = "DELETE FROM omise_table WHERE id = :id";
+$sql = "DELETE FROM omise_user_table WHERE id = :id";
 $stmt = $pdo->prepare($sql);
 $stmt->bindValue(':id',$id, PDO::PARAM_INT);  //Integer（数値の場合 PDO::PARAM_INT)
 $status = $stmt->execute(); //実行
@@ -18,7 +18,7 @@ $status = $stmt->execute(); //実行
 if ($status == false) {
     sql_error($stmt);
 } else {
-    redirect("select.php");
+    redirect("admin.php");
 }
 
 ?>

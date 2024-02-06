@@ -1,10 +1,21 @@
 <?php
 
+//0. SESSION開始！！
+session_start();
+
+// 最後に操作してから30分経過したら自動的にログアウト
+if (isset($_SESSION["lastActive"]) && (time() - $_SESSION["lastActive"] > 1800)) {
+    session_unset();     // unset $_SESSION 変数
+    session_destroy();   // セッションを破棄
+    header("Location: login.php");
+}
+
 // IDをGETで取得
 $id = $_GET["id"];
 
 // データベース読み込み
 include("funcs.php");
+sschk();
 $pdo = db_conn();
 
 // データ登録SQL作成
@@ -29,7 +40,7 @@ if($status==false) {
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>お店お気に入り登録</title>
+  <title>お店お気に入り登録（修正）</title>
   <link href="css/index.css" rel="stylesheet">
   <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 </head>
@@ -42,6 +53,7 @@ if($status==false) {
 
 <!-- Main[Start] -->
 <div id="searchPage"><a href="select.php">お気に入り検索へ</a></div>
+<div id="logout"><a href="logout.php">ログアウト</a></div>
 
 <div id="registerForm">
   <div id="recommend">

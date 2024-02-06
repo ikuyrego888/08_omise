@@ -1,10 +1,26 @@
 <?php
-require_once('funcs.php');
-
 session_start();
+include('funcs.php');
+sschk();
+
+// 最後に操作してから30分経過したら自動的にログアウト
+if (isset($_SESSION["lastActive"]) && (time() - $_SESSION["lastActive"] > 1800)) {
+  session_unset();     // unset $_SESSION 変数
+  session_destroy();   // セッションを破棄
+  header("Location: login.php");
+}
 
 //1. DB接続
 $pdo = db_conn();
+
+// try {
+//   // さくらサーバ データベース
+//   // $pdo = new PDO('mysql:dbname=gs-ac07_gs_db08;charset=utf8;host=mysql57.gs-ac07.sakura.ne.jp','gs-ac07','Eiiti0826');
+//   // ローカルストレージ データベース Password:MAMP='root',XAMPP=''
+//   $pdo = new PDO('mysql:dbname=gs_db08;charset=utf8;host=localhost','root','');
+// } catch (PDOException $e) {
+//   exit('DBConnection Error:'.$e->getMessage());
+// }
 
 //2. 検索条件の初期化
 $situationCondition = "";
@@ -36,7 +52,7 @@ if (isset($_POST["genreOption"])) {
 
 // 検索タイプを確認（OR検索かAND検索か/デフォルトはOR検索）
 // POSTセットされていること且つPOSTがorだったら" OR "、そうでない場合は" AND "
-// ?と:は、手前の式が真なら" OR "、偽なら" AND "というコード
+// ?と:は、手前の式が真なら" OR "、偽なら" AND "というコード（IF文に似ている）
 $search = isset($_POST["searchType"]) && $_POST["searchType"] == "or" ? " OR " : " AND ";
 
 // エリアの入力条件を確認
@@ -180,6 +196,16 @@ $_SESSION["result"] = $view;
 
 <!-- Main[Start] -->
 <div id="registerPage"><a href="index.php">お気に入り登録へ</a></div>
+<div id="logout"><a href="logout.php">ログアウト</a></div>
+
+<!-- 管理者IDの場合にのみ表示させるボタン -->
+<?php
+if (isset($_SESSION["admFlg"])) {
+  if ($_SESSION["admFlg"] == 1 ) {
+    echo '<div id="admButton"><a href="admin.php">管理者ページ</a></div>';
+  }
+};
+?>
 
 <div id="searchForm">
   <div id="recommend">

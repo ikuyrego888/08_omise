@@ -17,7 +17,7 @@ function db_conn(){
         $db_host = ""; //DBホスト
 
         //localhost以外＊＊自分で書き直してください！！＊＊
-        if($_SERVER[""] != ""){
+        if($_SERVER["HTTP_HOST"] != ""){
             $db_name = "";  //データベース名
             $db_id   = "";  //アカウント名（さくらコントロールパネルに表示されています）
             $db_pw   = "";  //パスワード(さくらサーバー最初にDB作成する際に設定したパスワード)
@@ -39,5 +39,15 @@ function sql_error($stmt) {
 function redirect($file_name) {
     header("Location: ".$file_name);
     exit();
+}
+
+//SessionCheck(スケルトン) ※ログイン状態であるか否かを確認するための関数
+function sschk(){
+  if($_SESSION["chk_ssid"] != session_id()){
+    exit("LOGIN ERROR");
+  } else {
+    session_regenerate_id(true);
+    $_SESSION["chk_ssid"] = session_id();
+  }
 }
 

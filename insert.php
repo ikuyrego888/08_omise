@@ -14,6 +14,14 @@ $memo = $_POST['memo'];
 //2. DB接続します
 include("funcs.php");
 $pdo = db_conn();
+// try {
+//   // さくらサーバ データベース
+//   // $pdo = new PDO('mysql:dbname=gs-ac07_gs_db08;charset=utf8;host=mysql57.gs-ac07.sakura.ne.jp','gs-ac07','Eiiti0826');
+//   // ローカルストレージ データベース Password:MAMP='root',XAMPP=''
+//   $pdo = new PDO('mysql:dbname=gs_db08;charset=utf8;host=localhost','root','');
+// } catch (PDOException $e) {
+//   exit('DBConnection Error:'.$e->getMessage());
+// }
 
 //３．データ登録SQL作成
 $stmt = $pdo->prepare("INSERT INTO omise_table ( omise, situation, genre, area, url, memo, indate ) VALUES( :omise, :situation, :genre, :area, :url, :memo, sysdate())");

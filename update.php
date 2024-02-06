@@ -2,6 +2,17 @@
 // エラー表示設定（最後にコメントアウトすること！）
 // ini_set('display_errors', 'On');
 // error_reporting(E_ALL);
+
+//0. SESSION開始！！
+session_start();
+
+// 最後に操作してから30分経過したら自動的にログアウト
+if (isset($_SESSION["lastActive"]) && (time() - $_SESSION["lastActive"] > 1800)) {
+    session_unset();     // unset $_SESSION 変数
+    session_destroy();   // セッションを破棄
+    header("Location: login.php");
+}
+
 ?>
 
 <?php
@@ -23,6 +34,14 @@ $id = $_POST['id'];
 //2. DB接続します
 include("funcs.php");
 $pdo = db_conn();
+// try {
+//   // さくらサーバ データベース
+//   // $pdo = new PDO('mysql:dbname=gs-ac07_gs_db08;charset=utf8;host=mysql57.gs-ac07.sakura.ne.jp','gs-ac07','Eiiti0826');
+//   // ローカルストレージ データベース Password:MAMP='root',XAMPP=''
+//   $pdo = new PDO('mysql:dbname=gs_db08;charset=utf8;host=localhost','root','');
+// } catch (PDOException $e) {
+//   exit('DBConnection Error:'.$e->getMessage());
+// }
 
 //３．データ登録SQL作成
 $sql = "UPDATE omise_table SET omise=:omise, situation=:situation, genre=:genre, area=:area, url=:url, memo=:memo, indate=sysdate() WHERE id=:id";

@@ -23,6 +23,21 @@ body {
     position: relative;
 }
 
+#registerFormAdm {
+    width: 60%;
+    margin: 0 auto;
+    margin-top: 6%;
+    font-size: 1.2rem;
+    color: white;
+    font-weight: bold;
+    text-align: center;
+    line-height: 40px;
+    background-color: #cd114a;
+    border-radius: 10px;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
+    position: relative;
+}
+
 #recommend {
     font-family: monospace;
     font-weight: normal;
@@ -41,7 +56,7 @@ a {
     color: black;
 }
 
-#searchPage {
+#searchPage, #logout, #admButton {
     width: 20%;
     height: 32px;
     display: block;
@@ -56,8 +71,31 @@ a {
     cursor: pointer;
     position: absolute;
     top: 1.4%;
-    right: 2%;
+    /* left: 2%; */
     z-index: 2;
+}
+
+#searchPage {
+    left: 2%;
+}
+
+#logout {
+    right: 2%;
+    width: 15%;
+    color: white;
+    background-color: #585d60;
+}
+
+#admButton {
+    right: 18%;
+    width: 15%;
+    color: white;
+    background-color: #585d60;
+    background-color: #cd114a;
+}
+
+#logout a, #admButton a {
+    color: white;
 }
 
 #searchPage:hover {
@@ -66,7 +104,11 @@ a {
     color: white;
 }
 
-#searchPage a:hover {
+#logout:hover, #admButton:hover {
+    opacity: 0.7;
+}
+
+#searchPage a:hover, #logout a:hover {
     color: white;
 }
 
@@ -124,7 +166,7 @@ table {
     box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2);
 }
 
-#omise, #area, #url, #memo {
+#omise, #area, #url, #memo, .userinfo {
     width: 100%;
     height: 32px;
     font-size: 1.0rem;
@@ -153,6 +195,34 @@ table {
 
 #register:hover {
     background-color: #00704A;
+    color: white;
+}
+
+#return a {
+    text-decoration: none;
+}
+
+#return {
+    width: 40%;
+    height: 32px;
+    display: block;
+    margin: 0 auto;
+    margin-top: 4%;
+    border-radius: 16px;
+    border: 1.2px solid rgb(128, 125, 125);
+    background-color: #efefef;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+#return:hover {
+    background-color: #00704A;
+    background-color: #585d60;
+    opacity: 0.9;
     color: white;
 }
 
@@ -217,9 +287,106 @@ table {
     color: white;
 }
 
+/* 管理者画面の設定 */
+#userTable {
+    border-collapse: collapse;
+    width: 72%;
+    margin: 0 auto;
+    margin-top: 5%;
+    text-align: center;
+}
+
+#userTable th, #userTable tr, #userTable td {
+    border: 1px solid #dddddd;
+}
+
+#userTable th {
+    background-color: #585d60;
+    color: white;
+}
+
+#userTable tr {
+    height: 36px;
+}
+
+#userTable th:nth-child(1) {
+    width: 8%;
+}
+
+#userTable th:nth-child(2) {
+    width: 28%;
+}
+
+#userTable th:nth-child(3) {
+    width: 30%;
+}
+
+#userTable th:nth-child(4) {
+    width: 10%;
+}
+
+#userTable th:nth-child(5) {
+    width: 14%;
+}
+
+#userTable th:nth-child(6) {
+    width: 10%;
+}
+
+.editButton, .updateButton {
+    width: 52%;
+    cursor: pointer;
+}
+
+.updateButton {
+    margin-top: 5%;
+}
+
+.cancelButton {
+    margin-top: 5%;
+    margin-bottom: 5%;
+    width: 88%;
+    cursor: pointer;
+}
+
+.updateButton:hover, .cancelButton:hover {
+    background-color: #585d60;
+    color: white;
+    border: 2px solid #ccc;
+    border-radius: 2px;
+}
+
+#editInput {
+    font-family: Hiragino Kaku Gothic ProN;
+    font-size: 1.0rem;
+    height: 24px;
+}
+
+#editSelect {
+    font-size: 1.0rem;
+    font-family: Hiragino Kaku Gothic ProN;
+    width: 72%;
+    height: 30px;
+}
+
+.userDelete a {
+    text-decoration: none;
+    /* color: black; */
+}
+
+.userDelete {
+    width: 72%;
+    cursor: pointer;
+}
+
+.userDelete:hover, .userDelete a:hover {
+    background-color: #585d60;
+    color: white;
+}
+
 @media screen and (max-width: 640px) {
     /* 何故か反応せず... */
-    #registerForm {
+    #registerForm, #registerFormAdm {
         margin-top: 12%;
         margin-bottom: 0;
         width: 80%;
@@ -237,11 +404,19 @@ table {
         line-height: 28px;
     }
 
-    #searchPage {
+    #searchPage, #logout, #admButton {
         width: 28%;
         font-size: 0.6rem;
         font-weight: bold;
         height: 24px;
+    }
+
+    #logout, #admButton {
+        width: 20%;
+    }
+
+    #admButton {
+        right: 24%;
     }
 
     #form {
@@ -290,4 +465,58 @@ table {
         width: 80%;
     }
 
+    #userTable {
+        width: 96%;
+    }
+
+    #userTable th {
+        font-size: 0.7rem;
+    }
+
+    #userTable th:nth-child(1) {
+        width: 6%;
+    }
+    
+    #userTable th:nth-child(2) {
+        width: 24%;
+    }
+    
+    #userTable th:nth-child(3) {
+        width: 34%;
+    }
+    
+    #userTable th:nth-child(4) {
+        width: 10%;
+        font-size: 0.6rem;
+    }
+
+    #userTable th:nth-child(5) {
+        width: 14%;
+    }
+
+    #userTable th:nth-child(6) {
+        width: 12%;
+    }
+
+    #userTable tr {
+        font-size: 0.7rem;
+    }
+
+    .editButton, .updateButton, .userDelete {
+        font-size: 0.6rem;
+        width: 80%;
+        padding-left: 0;
+        padding-right: 0;
+    }
+
+    .cancelButton {
+        font-size: 0.4rem;
+        padding-left: 0;
+        padding-right: 0;
+    }
+
+    #editInput, #editSelect {
+        width: 90%;
+        font-size: 0.7rem;
+    }
 }
